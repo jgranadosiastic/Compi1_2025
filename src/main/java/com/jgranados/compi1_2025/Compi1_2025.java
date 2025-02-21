@@ -24,7 +24,7 @@ public class Compi1_2025 {
             parser.parse();
             parser.getContador().imprimirContador();
         } catch (Exception e) {
-            System.out.println("manejo de exception");
+           e.printStackTrace();
         }
     }
 }

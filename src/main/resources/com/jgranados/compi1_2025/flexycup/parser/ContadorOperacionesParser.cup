@@ -29,6 +29,18 @@ public void syntax_error(Symbol cur_token) {
 public void unrecovered_syntax_error(Symbol cur_token) {
             System.out.println("Error irrecuperable sobrecargado");
         }
+
+public void imprimirResultado(Integer op, Integer entero1, Integer entero2) {
+    switch (op) {
+        case sym.SUMA:
+            System.out.printf("La suma de %d y %d es: %d\n", entero1, entero2, entero1 + entero2);
+            break;
+        case sym.RESTA:
+            System.out.printf("La restade %d y %d es: %d\n", entero1, entero2, entero1 - entero2);
+            break;
+    }
+}
+
 :}
 
 /* Terminals (tokens returned by the scanner). */
@@ -37,7 +49,7 @@ terminal Integer    ENTERO;
 
 /* Non-terminals */
 non terminal                        operacion;
-non terminal                        simbolo;
+non terminal Integer                simbolo;
 non terminal                        operaciones;
 
 
@@ -50,14 +62,14 @@ operaciones ::= operacion P_COMA operaciones
                 | operacion                         
                 ;
 
-operacion   ::= ENTERO simbolo ENTERO
+operacion   ::= ENTERO:e1 simbolo:op ENTERO:e2         {: imprimirResultado(op, e1, e2);:}
                 | error                             {: System.out.println("Aqui hay un error");:}
                 ;
 
-simbolo     ::= SUMA                                {: System.out.println("Se econtro una suma");  contador.incrementarSumas(); :}
-                | RESTA                             {: contador.incrementarRestas(); :}
-                | DIVISION                          {: contador.incrementarDiv(); :}
-                | MULTIPLICACION                    {: System.out.println("Se econtro una multi"); contador.incrementarMult(); :}
+simbolo     ::= SUMA                                {: contador.incrementarSumas(); RESULT = sym.SUMA;:}
+                | RESTA                             {: contador.incrementarRestas();  RESULT = sym.RESTA;:}
+                | DIVISION                          {: contador.incrementarDiv();  RESULT = sym.DIVISION;:}
+                | MULTIPLICACION                    {: contador.incrementarMult();  RESULT = sym.MULTIPLICACION;:}
                 ;
 
 

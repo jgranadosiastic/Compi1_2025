@@ -126,6 +126,18 @@ public void unrecovered_syntax_error(Symbol cur_token) {
             System.out.println("Error irrecuperable sobrecargado");
         }
 
+public void imprimirResultado(Integer op, Integer entero1, Integer entero2) {
+    switch (op) {
+        case sym.SUMA:
+            System.out.printf("La suma de %d y %d es: %d\n", entero1, entero2, entero1 + entero2);
+            break;
+        case sym.RESTA:
+            System.out.printf("La restade %d y %d es: %d\n", entero1, entero2, entero1 - entero2);
+            break;
+    }
+}
+
+
 
 /** Cup generated class to encapsulate user supplied action code.*/
 @SuppressWarnings({"rawtypes", "unchecked", "unused"})
@@ -187,7 +199,16 @@ class CUP$ContadorOperacionesParser$actions {
           case 3: // operacion ::= ENTERO simbolo ENTERO 
             {
               Object RESULT =null;
-
+		int e1left = ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.elementAt(CUP$ContadorOperacionesParser$top-2)).left;
+		int e1right = ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.elementAt(CUP$ContadorOperacionesParser$top-2)).right;
+		Integer e1 = (Integer)((java_cup.runtime.Symbol) CUP$ContadorOperacionesParser$stack.elementAt(CUP$ContadorOperacionesParser$top-2)).value;
+		int opleft = ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.elementAt(CUP$ContadorOperacionesParser$top-1)).left;
+		int opright = ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.elementAt(CUP$ContadorOperacionesParser$top-1)).right;
+		Integer op = (Integer)((java_cup.runtime.Symbol) CUP$ContadorOperacionesParser$stack.elementAt(CUP$ContadorOperacionesParser$top-1)).value;
+		int e2left = ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.peek()).left;
+		int e2right = ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.peek()).right;
+		Integer e2 = (Integer)((java_cup.runtime.Symbol) CUP$ContadorOperacionesParser$stack.peek()).value;
+		 imprimirResultado(op, e1, e2);
               CUP$ContadorOperacionesParser$result = parser.getSymbolFactory().newSymbol("operacion",0, ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.elementAt(CUP$ContadorOperacionesParser$top-2)), ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.peek()), RESULT);
             }
           return CUP$ContadorOperacionesParser$result;
@@ -204,8 +225,8 @@ class CUP$ContadorOperacionesParser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 5: // simbolo ::= SUMA 
             {
-              Object RESULT =null;
-		 System.out.println("Se econtro una suma");  contador.incrementarSumas(); 
+              Integer RESULT =null;
+		 contador.incrementarSumas(); RESULT = sym.SUMA;
               CUP$ContadorOperacionesParser$result = parser.getSymbolFactory().newSymbol("simbolo",1, ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.peek()), RESULT);
             }
           return CUP$ContadorOperacionesParser$result;
@@ -213,8 +234,8 @@ class CUP$ContadorOperacionesParser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 6: // simbolo ::= RESTA 
             {
-              Object RESULT =null;
-		 contador.incrementarRestas(); 
+              Integer RESULT =null;
+		 contador.incrementarRestas();  RESULT = sym.RESTA;
               CUP$ContadorOperacionesParser$result = parser.getSymbolFactory().newSymbol("simbolo",1, ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.peek()), RESULT);
             }
           return CUP$ContadorOperacionesParser$result;
@@ -222,8 +243,8 @@ class CUP$ContadorOperacionesParser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 7: // simbolo ::= DIVISION 
             {
-              Object RESULT =null;
-		 contador.incrementarDiv(); 
+              Integer RESULT =null;
+		 contador.incrementarDiv();  RESULT = sym.DIVISION;
               CUP$ContadorOperacionesParser$result = parser.getSymbolFactory().newSymbol("simbolo",1, ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.peek()), RESULT);
             }
           return CUP$ContadorOperacionesParser$result;
@@ -231,8 +252,8 @@ class CUP$ContadorOperacionesParser$actions {
           /*. . . . . . . . . . . . . . . . . . . .*/
           case 8: // simbolo ::= MULTIPLICACION 
             {
-              Object RESULT =null;
-		 System.out.println("Se econtro una multi"); contador.incrementarMult(); 
+              Integer RESULT =null;
+		 contador.incrementarMult();  RESULT = sym.MULTIPLICACION;
               CUP$ContadorOperacionesParser$result = parser.getSymbolFactory().newSymbol("simbolo",1, ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.peek()), RESULT);
             }
           return CUP$ContadorOperacionesParser$result;
