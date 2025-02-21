@@ -34,7 +34,7 @@ public class ContadorOperacionesParser extends java_cup.runtime.lr_parser {
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
     "\000\011\000\002\002\004\000\002\004\005\000\002\004" +
-    "\003\000\002\004\003\000\002\002\005\000\002\003\003" +
+    "\003\000\002\002\005\000\002\002\003\000\002\003\003" +
     "\000\002\003\003\000\002\003\003\000\002\003\003" });
 
   /** Access to production table. */
@@ -43,14 +43,14 @@ public class ContadorOperacionesParser extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\016\000\006\003\004\011\007\001\002\000\004\002" +
-    "\ufffe\001\002\000\004\002\020\001\002\000\006\002\uffff" +
-    "\004\016\001\002\000\012\005\012\006\010\007\013\010" +
-    "\011\001\002\000\004\011\ufffb\001\002\000\004\011\ufff9" +
-    "\001\002\000\004\011\ufffc\001\002\000\004\011\ufffa\001" +
-    "\002\000\004\011\015\001\002\000\006\002\ufffd\004\ufffd" +
-    "\001\002\000\006\003\004\011\007\001\002\000\004\002" +
-    "\000\001\002\000\004\002\001\001\002" });
+    "\000\016\000\006\003\004\011\007\001\002\000\006\002" +
+    "\ufffd\004\ufffd\001\002\000\004\002\020\001\002\000\006" +
+    "\002\uffff\004\016\001\002\000\012\005\012\006\010\007" +
+    "\013\010\011\001\002\000\004\011\ufffb\001\002\000\004" +
+    "\011\ufff9\001\002\000\004\011\ufffc\001\002\000\004\011" +
+    "\ufffa\001\002\000\004\011\015\001\002\000\006\002\ufffe" +
+    "\004\ufffe\001\002\000\006\003\004\011\007\001\002\000" +
+    "\004\002\000\001\002\000\004\002\001\001\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -184,20 +184,20 @@ class CUP$ContadorOperacionesParser$actions {
           return CUP$ContadorOperacionesParser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 3: // operaciones ::= error 
-            {
-              Object RESULT =null;
-		 System.out.println("Aqui hay un error");
-              CUP$ContadorOperacionesParser$result = parser.getSymbolFactory().newSymbol("operaciones",2, ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.peek()), RESULT);
-            }
-          return CUP$ContadorOperacionesParser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 4: // operacion ::= ENTERO simbolo ENTERO 
+          case 3: // operacion ::= ENTERO simbolo ENTERO 
             {
               Object RESULT =null;
 
               CUP$ContadorOperacionesParser$result = parser.getSymbolFactory().newSymbol("operacion",0, ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.elementAt(CUP$ContadorOperacionesParser$top-2)), ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.peek()), RESULT);
+            }
+          return CUP$ContadorOperacionesParser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 4: // operacion ::= error 
+            {
+              Object RESULT =null;
+		 System.out.println("Aqui hay un error");
+              CUP$ContadorOperacionesParser$result = parser.getSymbolFactory().newSymbol("operacion",0, ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.peek()), ((java_cup.runtime.Symbol)CUP$ContadorOperacionesParser$stack.peek()), RESULT);
             }
           return CUP$ContadorOperacionesParser$result;
 
